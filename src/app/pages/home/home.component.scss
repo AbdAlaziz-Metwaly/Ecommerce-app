@@ -1,0 +1,16 @@
+.card {
+  button {
+    transform: translateY(100%);
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  &:hover {
+    button {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    box-shadow: rgba(115, 226, 137, 0.551) 0px 5px 15px;
+    transition: all 0.5s;
+  }
+}

@@ -1,0 +1,37 @@
+<section>
+  <h1 class="text-center text-4xl font-bold text-green-600 mb-10">
+    My Wish List
+  </h1>
+  @for ( wishlist of wishListData; track wishlist.id) {
+  <div
+    class="grid grid-cols-6 md:grid-cols-[10%_minmax(0,1fr)] border-b mb-2 md:px-16"
+  >
+    <div class="mx-auto col-start-1 col-end-6 md:col-start-1 md:col-end-2">
+      <img
+        [src]="wishlist.imageCover"
+        class="w-full h-[140px] md:h-[200px]"
+        [alt]="wishlist.description"
+      />
+    </div>
+    <div
+      class="flex justify-between items-center gap-6 col-start-1 col-end-6 md:col-start-2 md:col-end-6"
+    >
+      <div class="ps-6">
+        <h3 class="md:text-3xl">{{ wishlist.title }}</h3>
+        <h4 class="text-green-500">price:{{ wishlist.price }}</h4>
+        <button class="text-red-600" (click)="removeItemwishlist(wishlist.id)">
+          <i class="fas fa-trash-can"></i> Remove
+        </button>
+      </div>
+      <div>
+        <button
+          class="border border-green-500 p-1 md:p-2 rounded"
+          (click)="addtocard(wishlist.id)"
+        >
+          Add To cart
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</section>

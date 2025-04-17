@@ -1,0 +1,47 @@
+@if (detailsproducts) {
+<section>
+  <div class="items-center px-10 md:grid grid-cols-[30%_70%]">
+    <div class="py-10">
+      <owl-carousel-o [options]="customDetailsSlider">
+        @for (deta of detailsproducts.images; track deta) {
+        <ng-template carouselSlide>
+          <img [src]="deta" [alt]="detailsproducts.title" class="max-w-md" />
+        </ng-template>
+        }
+      </owl-carousel-o>
+    </div>
+    <div class="">
+      <h2 class="text-2xl font-medium">
+        {{ detailsproducts.title }}
+      </h2>
+      <p class="my-3 text-gray-600">
+        {{ detailsproducts.description }}
+      </p>
+
+      <div class="flex flex-row justify-between">
+        <span class="text-gray-900">{{ detailsproducts.price }} EGP</span>
+        <div class="flex">
+          <i class="fas fa-star text-yellow-300"></i>
+          <span class="text-gray-900">
+            {{ detailsproducts.ratingsAverage }}</span
+          >
+        </div>
+      </div>
+      <div class="flex justify-between items-center my-10">
+        <button
+          (click)="addtocard(detailsproducts.id)"
+          class="cursor-pointer mx-auto bg-green-600 text-white py-2 px-10 border rounded-lg w-[70%]"
+        >
+          + Add
+        </button>
+
+        <i
+          (click)="addToWishList(detailsproducts.id)"
+          class="fa-solid fa-heart text-3xl me-4 cursor-pointer"
+        ></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+}

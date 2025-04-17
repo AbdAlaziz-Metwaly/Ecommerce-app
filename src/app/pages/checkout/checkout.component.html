@@ -1,0 +1,38 @@
+<section class="p-5">
+  <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+    <div class="mb-1">
+      <label for="details" class="block mb-2 text-lg">Details:</label>
+      <textarea
+        formControlName="details"
+        id="details"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      >
+      </textarea>
+    </div>
+    <div class="mb-1">
+      <label for="phone" class="block mb-2 text-lg">phone:</label>
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+    </div>
+    <div class="mb-1">
+      <label for="city" class="block mb-2 text-lg">city:</label>
+      <input
+        formControlName="city"
+        type="text"
+        id="city"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+      />
+    </div>
+    <button
+      [disabled]="checkOutForm.invalid"
+      type="submit"
+      class="cursor-pointer w-full my-10 p-2 font-medium text-blue-700 bg-white rounded-lg border border-blue-300 hover:bg-blue-300"
+    >
+      pay now
+    </button>
+  </form>
+</section>

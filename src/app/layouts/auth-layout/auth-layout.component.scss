@@ -1,0 +1,10 @@
+@layer utilities {
+  .container {
+    margin-inline: auto;
+  }
+}
+@media (width >= 96rem) {
+  .container {
+    max-width: 80rem;
+  }
+}

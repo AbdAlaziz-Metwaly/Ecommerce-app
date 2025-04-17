@@ -1,0 +1,66 @@
+@if (cartDetails.totalCartPrice) {
+<section class="bg-gray-50 rounded-border shadow p-6 mx-auto">
+  <div class="flex justify-between items-start mb-4">
+    <h1 class="text-3xl font-bold">Cart Shop</h1>
+    <button
+      class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 cursor-pointer"
+      [routerLink]="['/checkout', cartDetails._id]"
+    >
+      check out
+    </button>
+  </div>
+
+  <h2 class="text-2xl font-medium p-3">
+    total price:{{ cartDetails.totalCartPrice }}
+  </h2>
+
+  @for (prod of cartDetails.products; track prod.product.id) {
+  <div class="md:grid grid-cols-[10%_minmax(0,_1fr)] ] border-b mb-2">
+    <div class="">
+      <img
+        [src]="prod.product.imageCover"
+        class="w-full h-[500px] md:h-[250px] object-contain"
+        [alt]="prod.product.title"
+      />
+    </div>
+    <div class="flex justify-between items-center ps-3">
+      <div class="">
+        <h3>{{ prod.product.title }}</h3>
+        <p>price:{{ prod.price }}</p>
+        <button (click)="removeItem(prod.product.id)" class="cursor-pointer">
+          <i class="fas fa-trash-can text-green-400 pe-2"></i>Remove
+        </button>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          (click)="upbataCount(prod.product.id, prod.count + 1)"
+          class="text-green-600 text-3xl cursor-pointer"
+        >
+          <i class="fa-regular fa-square-plus"></i>
+        </button>
+        <span>{{ prod.count }}</span>
+        <button
+          (click)="upbataCount(prod.product.id, prod.count - 1)"
+          class="text-green-600 text-3xl cursor-pointer"
+        >
+          <i class="fa-regular fa-square-minus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+  <button
+    (click)="clearCartHandler()"
+    class="cursor-pointer text-gray-900 bg-gray-50 font-medium rounded-lg border border-gray-900 hover:bg-gray-100 text-sm px-5 py-2.5 me-2 mb-2 mx-auto block"
+  >
+    Clear Your Cart
+  </button>
+</section>
+
+} @else {
+<h1
+  class="text-center text-2xl bg-gray-400 text-gray-900 w-[50%] mx-auto rounded-lg shadow-lg"
+>
+  No Data Found
+</h1>
+}

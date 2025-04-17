@@ -1,0 +1,47 @@
+<section class="py-10 px-4">
+  <input
+    [(ngModel)]="searchText"
+    type="search"
+    placeholder="Search"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[70%] p-2.5 mx-auto"
+  />
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pt-4">
+    @for (prod of products | search:searchText; track prod.id) {
+    <div class="card overflow-hidden py-6 px-2 rounded-lg">
+      <div [routerLink]="[`/details`, prod._id]">
+        <div class="card-img">
+          <img
+            [src]="prod.imageCover"
+            class="w-full rounded object-contain"
+            [alt]="prod.title"
+          />
+        </div>
+        <div class="card-body px-2 py-4">
+          <h4 class="text-green-500 text-xs">{{ prod.category.name }}</h4>
+          <h3 class="font-medium">{{ prod.title.split(" ", 2).join(" ") }}</h3>
+          <div class="flex justify-between items-center">
+            <span>{{ prod.price }} EGP</span>
+            <div class="flex items-center">
+              <i class="fas fa-star text-yellow-300"></i>
+              <span class="text-gray-500">{{ prod.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <button
+          (click)="addtocard(prod.id)"
+          class="cursor-pointer bg-green-600 px-6 py-2 rounded-lg border text-white my-1 block w-[70%]"
+        >
+          + Add
+        </button>
+
+        <i
+          (click)="addToWishList(prod.id)"
+          class="fa-solid fa-heart text-3xl me-4 cursor-pointer"
+        ></i>
+      </div>
+    </div>
+    }
+  </div>
+</section>

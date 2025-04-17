@@ -1,0 +1,20 @@
+<section class="px-3">
+  <h1 class="text-center text-4xl font-bold text-green-600 mb-10">
+    All Brands
+  </h1>
+  <div class="grid md:grid-cols-3 gap-10">
+    @for (brand of brandsData; track brand._id) {
+
+    <div
+      class="w-full bg-white border border-gray-200 rounded-lg hover:shadow-xl shadow-green-200 cursor-pointer"
+    >
+      <img class="w-full" [src]="brand.image" [alt]="brand.slug" />
+
+      <div class="flex justify-center items-center text-lg p-3">
+        <h2 class="text-sm text-gray-900">{{ brand.name }}</h2>
+      </div>
+    </div>
+
+    }
+  </div>
+</section>
